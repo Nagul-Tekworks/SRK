@@ -1,6 +1,10 @@
 package com.srk.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,4 +25,23 @@ public class StudentController {
 		String str=studentService.saveStudent(std);
 		return str;
 	}
+	
+	@DeleteMapping("/deletestd")
+	public String deleteStdById(@RequestBody Student std) {
+		
+		String str=studentService.deleteStdById(std.getSid());
+		
+		return str;
+	}
+	
+	@GetMapping("/getallstudents")
+	public List<Student> getStudents(){
+		
+		List<Student> std=studentService.getAllStudents();
+		
+		return std;
+	}
+	
+	
+	
 }
