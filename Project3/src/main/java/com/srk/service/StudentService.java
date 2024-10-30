@@ -33,4 +33,16 @@ public class StudentService {
 		return stds;
 	}
 
+	public String updateStudent(Student std) {
+		
+		Student std1=studentRepo.findById(std.getSid()).get();
+		
+		std1.setCollgename(std.getCollgename());
+		std1.setEmail(std.getEmail());
+		std1.setName(std.getName());
+		
+		studentRepo.save(std1);
+		return "Student record updated successfully";
+	}
+
 }
